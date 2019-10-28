@@ -12,7 +12,13 @@ else
   # Linux
   font_dir="$HOME/.local/share/fonts"
   mkdir -p $font_dir
+  if [ "$(ls -A "$font_dir")" ]; then
+    echo "$font_dir is not empty"
+    echo "It seems fonts have been setup before. Skipping fonts installation."
+    exit 0
+  fi
 fi
+
 
 # Copy all fonts to user fonts directory
 echo "Copying fonts..."
